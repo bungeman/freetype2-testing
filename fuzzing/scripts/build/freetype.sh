@@ -18,12 +18,13 @@ path_to_freetype=$( readlink -f "../../../external/freetype2" )
 if [[ "${#}" == "0" || "${1}" != "--no-init" ]]; then
 
     # We always want to run the latest version of FreeType:
-    git submodule update --init --depth 1 --remote "${path_to_freetype}"
+    git submodule update --init --depth 10 --remote "${path_to_freetype}"
 
     cd "${path_to_freetype}"
 
     git clean -dfqx
     git reset --hard
+    git diff a3bab162b2ae616074c8877a04556932998aeacd a3bab162b2ae616074c8877a04556932998aeacd~1 -- src/sfnt/pngshim.c | git apply
     git rev-parse HEAD
 
     # Manipulating `ftoption.h' to enable non-standard features of FreeType.
@@ -39,6 +40,12 @@ if [[ "${#}" == "0" || "${1}" != "--no-init" ]]; then
     export BROTLI_CFLAGS="-I../brotli/c/include"
     export BROTLI_LIBS="-l../brotli/build/libbrotlidec-static.a"
 
+    export ZLIB_CFLAGS="-I../zlib/usr/include"
+    export ZLIB_LIBS="-l../zlib/usr/lib/libz.a"
+
+    export LIBPNG_CFLAGS="-I../libpng/usr/include"
+    export LIBPNG_LIBS="-l../libpng/usr/lib/libpng.a"
+
     # Having additional libraries is pain since they have to be linked
     # statically for OSS-Fuzz.  Should additional libraries be required, they
     # have to be linked properly in `fuzzing/src/fuzzers/CMakeLists.txt'.
@@ -48,9 +55,9 @@ if [[ "${#}" == "0" || "${1}" != "--no-init" ]]; then
        --disable-shared   \
        --with-brotli      \
        --with-bzip2       \
-       --without-harfbuzz \
-       --without-png      \
-       --without-zlib
+       --with-zlib        \
+       --with-png         \
+       --without-harfbuzz
 fi
 
 cd "${path_to_freetype}"

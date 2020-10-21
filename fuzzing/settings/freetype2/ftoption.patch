@@ -1,8 +1,35 @@
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 18dc4669..3491225a 100644
+index 097f19b..e7a49a5 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -503,7 +503,7 @@ FT_BEGIN_HEADER
+@@ -241,7 +241,7 @@ FT_BEGIN_HEADER
+    *   options set by those programs have precedence, overwriting the value
+    *   here with the configured one.
+    */
+-/* #define FT_CONFIG_OPTION_USE_BZIP2 */
++#define FT_CONFIG_OPTION_USE_BZIP2
+ 
+ 
+   /**************************************************************************
+@@ -270,7 +270,7 @@ FT_BEGIN_HEADER
+    *   options set by those programs have precedence, overwriting the value
+    *   here with the configured one.
+    */
+-/* #define FT_CONFIG_OPTION_USE_PNG */
++#define FT_CONFIG_OPTION_USE_PNG
+ 
+ 
+   /**************************************************************************
+@@ -303,7 +303,7 @@ FT_BEGIN_HEADER
+    *   options set by those programs have precedence, overwriting the value
+    *   here with the configured one.
+    */
+-/* #define FT_CONFIG_OPTION_USE_BROTLI */
++#define FT_CONFIG_OPTION_USE_BROTLI
+ 
+ 
+   /**************************************************************************
+@@ -517,7 +517,7 @@ FT_BEGIN_HEADER
     *
     *   More details can be found in the file `fterrors.h`.
     */
@@ -11,7 +38,7 @@ index 18dc4669..3491225a 100644
  
  
    /*************************************************************************/
-@@ -658,8 +658,8 @@ FT_BEGIN_HEADER
+@@ -672,8 +672,8 @@ FT_BEGIN_HEADER
     * https://www.microsoft.com/typography/cleartype/truetypecleartype.aspx
     */
  /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  1         */
@@ -22,7 +49,7 @@ index 18dc4669..3491225a 100644
  
  
    /**************************************************************************
-@@ -778,7 +778,7 @@ FT_BEGIN_HEADER
+@@ -792,7 +792,7 @@ FT_BEGIN_HEADER
     * switch between the two engines using the `hinting-engine` property of
     * the 'type1' driver module.
     */
@@ -31,7 +58,7 @@ index 18dc4669..3491225a 100644
  
  
    /*************************************************************************/
-@@ -820,7 +820,7 @@ FT_BEGIN_HEADER
+@@ -834,7 +834,7 @@ FT_BEGIN_HEADER
     * between the two engines using the `hinting-engine` property of the 'cff'
     * driver module.
     */
